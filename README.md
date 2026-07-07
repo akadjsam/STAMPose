@@ -3,12 +3,23 @@
 <p align="center">
   <b>STAMPose PyTorch implementation</b> · ACCV2026 · Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation
 </p>
-[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/akadjsam/STAMPose)
-[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org)
-![Conference](https://img.shields.io/badge/ACCV-2026-3776AB)
-[![arXiv](https://img.shields.io/badge/arXiv-0000.00000-B31B1B)](논문_링크)
-[![License](https://img.shields.io/badge/License-Apache_2.0-7E9E35)](https://github.com/akadjsam/STAMPose/blob/main/LICENSE)
 
+<p align="center">
+  <a href="https://github.com/akadjsam/STAMPose">
+    <img src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white" alt="GitHub">
+  </a>
+  <a href="https://pytorch.org">
+    <img src="https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white" alt="PyTorch">
+  </a>
+  <img src="https://img.shields.io/badge/ACCV-2026-3776AB" alt="Conference">
+  <a href="논문_링크">
+    <img src="https://img.shields.io/badge/arXiv-0000.00000-B31B1B" alt="arXiv">
+  </a>
+  <a href="https://github.com/akadjsam/STAMPose/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-Apache_2.0-7E9E35" alt="License">
+  </a>
+</p>
+  
 <p align="center">
   <img src="sample.gif" width="70%" alt="STAMPose demo video" />
 </p>
