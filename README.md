@@ -70,22 +70,23 @@ CUDA_VISIBLE_DEVICES=0 python train.py --config <configs> --checkpoint <checkpoi
 ```
 
 ### MPI-INF-3DHP
-1. <configs>에는 config 파일의 경로를 입력하세요. (예시: configs/MPI/STAMPose_mpi_81.yaml)
-2. <checkpoint>에는 저장할 checkpoint 디렉토리를 지정하세요. (예시: checkpoint_mpi/STAMPose_81)
+1. configs에는 config 파일의 경로를 입력하세요. (예시: configs/MPI/STAMPose_mpi_81.yaml)
+2. checkpoint에는 저장할 checkpoint 디렉토리를 지정하세요. (예시: checkpoint_mpi/STAMPose_81)
 ```bash
 python train_3dhp.py --config <configs> --checkpoint <checkpoint>
 ```
 
 ## Evaluation
 ### Human3.6M
-1. <configs>에는 학습한 모델의 config 파일의 경로를 입력하세요. (예시: configs/pose3d/STAMPose_train_h36m_S.yaml)
-2. <checkpoint>에는 학습한 모델의 경로를 입력하세요. (예시: checkpoint/STAMPose_S/best)
+1. configs에는 학습한 모델의 config 파일의 경로를 입력하세요. (예시: configs/pose3d/STAMPose_train_h36m_S.yaml)
+2. checkpoint_dir에는 evaluation 결과를 저장할 제목을 입력하세요. (예시: eval)
+3. checkpoint에는 학습한 모델의 경로를 입력하세요. (예시: STAMPose_S/best_epoch.bin)
 ```bash
 python train.py --config <configs> -c <checkpoint_dir> -e <checkpoint>
 ```
 
 ### MPI-INF-3DHP
-1. <configs>, <checkpoint_dir>는 Training 때와 동일하게 지정하고, <checkpoint_file>에는 평가할 체크포인트 파일명을 입력하세요.
+1. configs, checkpoint_dir는 Training 때와 동일하게 지정하고, checkpoint_file에는 평가할 체크포인트 파일명을 입력하세요.
 ```bash
 python train_3dhp.py --config <configs> --checkpoint <checkpoint_dir> --checkpoint-file <checkpoint_file> --eval-only
 ```
@@ -94,6 +95,8 @@ python train_3dhp.py --config <configs> --checkpoint <checkpoint_dir> --checkpoi
 [Download](https://drive.google.com/drive/folders/1m47HUeP5tkviIZmdtTI1gHJXJmslzjp4?usp=sharing)
 
 ## Demo
+1. Download YOLOv3 + HRNet weights → ./demo/lib/checkpoint/ [Google Drive](https://drive.google.com/drive/folders/1_ENAMOsPM7FXmdYRbkwbFHgzQq_B_NQA)
+2. sample 비디오를 demo/video 에 위치시키세요.
 ```
 python vis.py --video sample.mp4 --gpu 0
 ```

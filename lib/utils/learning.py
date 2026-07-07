@@ -78,7 +78,7 @@ def partial_train_layers(model, partial_list):
 
 def load_backbone(args):
     if args.backbone=='STAMPose':
-        model_backbone = STAMPose(num_heads=args.num_heads, num_frame=args.maxlen, embed_dim_ratio=args.dim_feat, mlp_ratio = args.mlp_ratio, depth = args.depth, drop_path_rate=args.drop_path_rate)
+        model_backbone = STAMPose(num_heads=args.num_heads, num_frame=args.maxlen, embed_dim_ratio=args.dim_feat, mlp_ratio = args.mlp_ratio, depth = args.depth, drop_path_rate=args.drop_path_rate, in_chans=getattr(args, 'in_chans', 2))
     else:
         raise Exception("Undefined backbone type.")
     return model_backbone

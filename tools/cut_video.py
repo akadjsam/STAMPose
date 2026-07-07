@@ -1,22 +1,22 @@
+import argparse
 from moviepy.video.io.VideoFileClip import VideoFileClip
 
-# 视频文件的路径
-video_path = '/home/hyl/data/PoseMamba/demo/video/drh.mp4'
+parser = argparse.ArgumentParser()
+parser.add_argument('--input', type=str, required=True, help='input video path')
+parser.add_argument('--output', type=str, required=True, help='output video path')
+parser.add_argument('--start', type=float, required=True, help='start time to cut (in seconds)')
+parser.add_argument('--end', type=float, required=True, help='end time to cut (in seconds)')
+args = parser.parse_args()
 
-# 指定开始截取的时间（单位：秒）
-start_time = 60
-
-# 指定结束截取的时间（单位：秒）
-end_time = 68
-
-# 加载视频文件
-clip = VideoFileClip(video_path)
+# Load the video file
+clip = VideoFileClip(args.input)
 print(clip.duration)
-# 截取指定时间段的视频
-sub_clip = clip.subclip(start_time, end_time)
 
-# 保存截取的视频片段
-sub_clip.write_videofile('/home/hyl/data/PoseMamba/demo/video/drh_cut.mp4')
+# Cut the video for the specified time range
+sub_clip = clip.subclip(args.start, args.end)
 
-# 关闭视频文件
+# Save the cut video clip
+sub_clip.write_videofile(args.output)
+
+# Close the video file
 clip.close()

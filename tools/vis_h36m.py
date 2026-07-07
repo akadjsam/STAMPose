@@ -24,7 +24,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import ipdb
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.getcwd())))
 import os
-# 获取当前工作目录
+# Get the current working directory
 current_directory = os.path.dirname(__file__) + '/../'
 sys.path.append(current_directory)
 from lib.utils.tools import *
@@ -131,15 +131,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--sequence-number', type=int, default=0)
     parser.add_argument('--dataset', default='h36m')
-    parser.add_argument("--config", type=str, default=current_directory+'checkpoint/pose3d/PoseMamba_l/config.yaml', help="Path to the config file.")
-    parser.add_argument('-c', '--checkpoint', default=current_directory+'checkpoint/pose3d/PoseMamba_l', type=str, metavar='PATH', help='checkpoint directory')
-    parser.add_argument('-e', '--evaluate', default=current_directory+'checkpoint/pose3d/PoseMamba_l/best_epoch.bin', type=str, metavar='FILENAME', help='checkpoint to evaluate (file name)')
+    parser.add_argument("--config", type=str, required=True, help="Path to the config file.")
+    parser.add_argument('-c', '--checkpoint', required=True, type=str, metavar='PATH', help='checkpoint directory')
+    parser.add_argument('-e', '--evaluate', required=True, type=str, metavar='FILENAME', help='checkpoint to evaluate (file name)')
     args = parser.parse_args()
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     os.environ["CUDA_VISIBLE_DEVICES"] = '3'
     configs = get_config(args.config)
     model_backbone = load_backbone(configs)
-    # 看情况加DataParallel
+    # Add DataParallel depending on the situation
     model_backbone = nn.DataParallel(model_backbone)
     # model_backbone = model_backbone.to(device)
     checkpoint = torch.load(args.evaluate, map_location=lambda storage, loc: storage)
@@ -240,7 +240,7 @@ def main():
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
     # ani.save(os.path.join(dir_path, f'{args.dataset}_pose{args.sequence_number}.gif'))
-    # 保存每一帧为单独的图片
+    # Save each frame as a separate image
     for frame in range(predicted_3d_pos.shape[1]):
         ax.clear()
 

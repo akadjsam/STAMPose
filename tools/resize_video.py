@@ -1,14 +1,18 @@
+import argparse
 from moviepy.editor import VideoFileClip
 
-# 加载MP4视频文件
-clip = VideoFileClip("/home/hyl/data/PoseMamba/demo/video/tj.mp4")
+parser = argparse.ArgumentParser()
+parser.add_argument('--input', type=str, required=True, help='input video path')
+parser.add_argument('--output', type=str, required=True, help='output video path')
+parser.add_argument('--width', type=int, default=1280, help='target width')
+parser.add_argument('--height', type=int, default=720, help='target height')
+args = parser.parse_args()
 
-# 设置目标宽度和高度
-target_width = 1280
-target_height = 720
+# Load the MP4 video file
+clip = VideoFileClip(args.input)
 
-# 调整视频尺寸
-resized_clip = clip.resize((target_width, target_height))
+# Resize the video
+resized_clip = clip.resize((args.width, args.height))
 
-# 写入文件
-resized_clip.write_videofile("/home/hyl/data/PoseMamba/demo/video/tj_1280_720.mp4")
+# Write to file
+resized_clip.write_videofile(args.output)

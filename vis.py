@@ -356,7 +356,7 @@ if __name__ == "__main__":
     parser.add_argument('--video', type=str, default='dance1.mp4', help='input video')
     parser.add_argument('--gpu', type=str, default='0', help='input video')
     parser.add_argument("--config", type=str, default="configs/pose3d/STAMPose_train_h36m_L.yaml", help="Path to the config file.")
-    parser.add_argument('-e', '--evaluate', default='weights/STAMPose_train_h36m_L/best_epoch.bin', type=str, metavar='FILENAME', help='checkpoint to evaluate (file name)')
+    parser.add_argument('-e', '--evaluate', default='STAMPose_train_h36m_L/best_epoch.bin', type=str, metavar='FILENAME', help='checkpoint to evaluate (file name)')
     parser.add_argument('-o', '--out_path', type=str, help='output path')
     parser.add_argument('--pixel', action='store_true', help='align with pixle coordinates')
     parser.add_argument('--focus', type=int, default=None, help='target person id')

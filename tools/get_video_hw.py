@@ -1,17 +1,17 @@
+import argparse
 from moviepy.editor import VideoFileClip
 
-# 加载MP4视频文件
-clip = VideoFileClip("/home/hyl/data/MotionBERT/demo/video/chuyin1.mp4")
+parser = argparse.ArgumentParser()
+parser.add_argument('--input', type=str, required=True, help='input video path')
+args = parser.parse_args()
 
-# 获取视频的宽度和高度
+# Load the MP4 video file
+clip = VideoFileClip(args.input)
+
+# Get the width and height of the video
 width = clip.w
 height = clip.h
 
-# 打印视频的宽度和高度
-print(f"视频宽度: {width}px")
-print(f"视频高度: {height}px")
-'''
-一定要是
-视频宽度: 1280px
-视频高度: 720px
-'''
+# Print the width and height of the video
+print(f"Video width: {width}px")
+print(f"Video height: {height}px")
