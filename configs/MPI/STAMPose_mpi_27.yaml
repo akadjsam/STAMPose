@@ -1,0 +1,42 @@
+#Training
+new-checkpoint: checkpoint/mpi/STAMPose_27/
+learning_rate: 0.0005
+batch_size: 16
+weight_decay: 0.01
+lr_decay: 0.99
+epochs: 300
+
+# Model
+# Model
+backbone: SATMPose
+num_heads : 4
+depth: 10 
+dim_feat: 64
+# Set both to the same value
+n_frames: 27
+maxlen: 27
+mlp_ratio: 2.0
+in_chans: 3
+att_fuse: True
+drop_path_rate : 0.2
+
+# Data
+data_root: data/motion3d/
+flip: True
+stride: 9
+num_joints: 17
+out_joints: 17
+test_augmentation: True
+data_augmentation: True
+reverse_augmentation: False
+out_all: 1
+test_batch_size: 128
+
+# Loss
+lambda_3d_velocity: 20.0
+lambda_scale: 0.5
+lambda_lv: 0.0
+lambda_lg: 0.0
+lambda_a: 0.0
+lambda_av: 0.0
+Lambda_accel : 0.0
