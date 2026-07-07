@@ -8,6 +8,10 @@
   <img src="sample.gif" width="70%" alt="STAMPose demo video" />
 </p>
 
+<p align="center">
+  Video source: <a href="https://www.youtube.com/shorts/QrGqxlrgyOc">YouTube</a>
+</p>
+
 ---
 
 ## Introduction
@@ -57,46 +61,46 @@ cd tools && python convert_h36m.py && cd ..
 ```
 
 ### MPI-INF-3DHP
-1. [P-STMO](https://github.com/paTRICK-swk/P-STMO)의 데이터셋 셋업을 따라해주세요.
+1. Please follow the dataset setup from [P-STMO](https://github.com/paTRICK-swk/P-STMO).
 2. After preprocessing, the generated .npz files (data_train_3dhp.npz and data_test_3dhp.npz) should be located at data/motion3d directory.
 
 
 ## Training
 ### Human3.6M
-1. <configs>에는 config 파일의 경로를 입력하세요. (예시: configs/pose3d/STAMPose_train_h36m_S.yaml)
-2. <checkpoint>에는 저장할 checkpoint의 이름을 지정하세요. (예시: checkpoint/STAMPose_S)
+1. Enter the path to the config file for `<configs>`. (e.g., configs/pose3d/STAMPose_train_h36m_S.yaml)
+2. Specify the name of the checkpoint to save for `<checkpoint>`. (e.g., checkpoint/STAMPose_S)
 ```bash
 CUDA_VISIBLE_DEVICES=0 python train.py --config <configs> --checkpoint <checkpoint>
 ```
 
 ### MPI-INF-3DHP
-1. configs에는 config 파일의 경로를 입력하세요. (예시: configs/MPI/STAMPose_mpi_81.yaml)
-2. checkpoint에는 저장할 checkpoint 디렉토리를 지정하세요. (예시: checkpoint_mpi/STAMPose_81)
+1. Enter the path to the config file for `configs`. (e.g., configs/MPI/STAMPose_mpi_81.yaml)
+2. Specify the checkpoint directory to save for `checkpoint`. (e.g., checkpoint_mpi/STAMPose_81)
 ```bash
 python train_3dhp.py --config <configs> --checkpoint <checkpoint>
 ```
 
 ## Evaluation
 ### Human3.6M
-1. configs에는 학습한 모델의 config 파일의 경로를 입력하세요. (예시: configs/pose3d/STAMPose_train_h36m_S.yaml)
-2. checkpoint_dir에는 evaluation 결과를 저장할 제목을 입력하세요. (예시: eval)
-3. checkpoint에는 학습한 모델의 경로를 입력하세요. (예시: STAMPose_S/best_epoch.bin)
+1. Enter the path to the trained model's config file for `configs`. (e.g., configs/pose3d/STAMPose_train_h36m_S.yaml)
+2. Enter a title to save the evaluation results for `checkpoint_dir`. (e.g., eval)
+3. Enter the path to the trained model for `checkpoint`. (e.g., STAMPose_S/best_epoch.bin)
 ```bash
 python train.py --config <configs> -c <checkpoint_dir> -e <checkpoint>
 ```
 
 ### MPI-INF-3DHP
-1. configs, checkpoint_dir는 Training 때와 동일하게 지정하고, checkpoint_file에는 평가할 체크포인트 파일명을 입력하세요.
+1. Specify `configs` and `checkpoint_dir` the same as during training, and enter the checkpoint filename to evaluate for `checkpoint_file`.
 ```bash
 python train_3dhp.py --config <configs> --checkpoint <checkpoint_dir> --checkpoint-file <checkpoint_file> --eval-only
 ```
 
-학습된 가중치는 아래의 링크에서 다운로드 받을 수 있습니다.
+Pretrained weights can be downloaded from the link below.
 [Download](https://drive.google.com/drive/folders/1m47HUeP5tkviIZmdtTI1gHJXJmslzjp4?usp=sharing)
 
 ## Demo
 1. Download YOLOv3 + HRNet weights → ./demo/lib/checkpoint/ [Google Drive](https://drive.google.com/drive/folders/1_ENAMOsPM7FXmdYRbkwbFHgzQq_B_NQA)
-2. sample 비디오를 demo/video 에 위치시키세요.
+2. Place the sample video in `demo/video`.
 ```
 python vis.py --video sample.mp4 --gpu 0
 ```
@@ -119,7 +123,7 @@ STAMPose/
 ```
 
 ## Acknowledgement
-우리의 코드는 아래의 레포지토리를 참고하였습니다. We thank the authors for releasing the codes.
+Our code is based on the following repositories. We thank the authors for releasing the codes.
 - [PoseMamba](https://github.com/nankingjing/PoseMamba)
 - [SasMamba](https://github.com/HuCui2022/sasmamba_pose_estimation)
 - [MotionBERT](https://github.com/Walter0807/MotionBERT)
