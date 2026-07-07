@@ -3,6 +3,11 @@
 <p align="center">
   <b>STAMPose PyTorch implementation</b> · ACCV2026 · Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation
 </p>
+[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/akadjsam/STAMPose)
+[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org)
+![Conference](https://img.shields.io/badge/ACCV-2026-3776AB)
+[![arXiv](https://img.shields.io/badge/arXiv-0000.00000-B31B1B)](논문_링크)
+[![License](https://img.shields.io/badge/License-Apache_2.0-7E9E35)](https://github.com/akadjsam/STAMPose/blob/main/LICENSE)
 
 <p align="center">
   <img src="sample.gif" width="70%" alt="STAMPose demo video" />
@@ -41,7 +46,7 @@ Performance measured on a single NVIDIA RTX 3090Ti GPU.
 Environments : Python 3.8.5, PyTorch 2.4.1+cu121, CUDA 12.1.
 
 ```bash
-git clone https://github.com/[YourUsername]/STAMPose.git
+git clone https://github.com/akadjsam/STAMPose.git
 cd STAMPose
 
 conda create -n STAMPose python=3.8.5
