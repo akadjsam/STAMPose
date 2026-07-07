@@ -18,4 +18,4 @@ n_out = max(1, round(duration * target_fps))
 indices = [min(round(i * original_fps / target_fps), len(frames) - 1) for i in range(n_out)]
 resampled_frames = [frames[i] for i in tqdm(indices, desc="Resampling frames")]
 
-imageio.mimsave(gif_path, resampled_frames, fps=target_fps)
+imageio.mimsave(gif_path, resampled_frames, fps=target_fps, loop=0)
