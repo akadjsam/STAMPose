@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  Video source: <a href="https://www.youtube.com/shorts/QrGqxlrgyOc">YouTube</a>
+  Video source is from <a href="https://www.youtube.com/shorts/QrGqxlrgyOc">YouTuber_Nikoork</a>
 </p>
 
 ---
