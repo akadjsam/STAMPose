@@ -12,36 +12,45 @@
     <img src="https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white" alt="PyTorch">
   </a>
   <img src="https://img.shields.io/badge/ACCV-2026-3776AB" alt="Conference">
-  <a href="논문_링크">
+  <!-- <a href="논문_링크">
     <img src="https://img.shields.io/badge/arXiv-0000.00000-B31B1B" alt="arXiv">
-  </a>
+  </a> -->
   <a href="https://github.com/akadjsam/STAMPose/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-Apache_2.0-7E9E35" alt="License">
   </a>
 </p>
   
 <p align="center">
-  <img src="sample.gif" width="70%" alt="STAMPose demo video" />
+  <img src="sample.gif" width="70%" alt="STAMPose demo video (BTS - 2.0)" />
 </p>
 
 <p align="center">
   Video source is from <a href="https://www.youtube.com/shorts/QrGqxlrgyOc">Youtuber Nikoork</a>
 </p>
 
+<p align="center">
+  <img src="sample2.gif" width="70%" alt="STAMPose demo video (cortis - REDRED)" />
+</p>
+
+<p align="center">
+  Video source is from <a href="https://www.youtube.com/watch?v=tNEpSOfsA3Y&list=LL&index=39">Youtuber Nikoork</a>
+</p>
+
 ---
 
 ## Introduction
 
-Monocular 3D human pose estimation (3D HPE) from video sequences has significantly benefited from Transformers, but the quadratic complexity of the attention mechanism makes processing long sequences computationally expensive. While State Space Models (SSMs) with linear complexity offer an efficient alternative, purely SSM-based architectures flatten the joints into a fixed order, struggling to naturally handle the non-Euclidean spatial topology of 3D skeletal data.
+Monocular 3D human pose estimation (3D HPE) from video has benefited significantly from Transformers, but the quadratic complexity of attention makes long sequences expensive. State Space Models (SSMs) offer linear complexity, but purely SSM-based architectures flatten the joints into a fixed scan order and capture inter-joint interactions only indirectly.
 
-**STAMPose** (Spatial-Temporal Attention-Mamba Pose estimation) addresses this limitation by proposing a hybrid architecture that assigns different operators to the spatial and temporal axes. Through axis-wise operator analysis, we found that the two axes are governed by opposite criteria:
+**STAMPose** (Spatial-Temporal Attention-Mamba Pose estimation) is a hybrid architecture that assigns different operators to the spatial and temporal axes. We select each operator from the accuracy and throughput measured at $J=17$ and $T=243$:
 
-* **Spatial Axis ($J=17$)**: On the short spatial axis, attention and SSM are equally accurate, so attention is chosen to maximize parallelization efficiency.
-* **Temporal Axis ($T=243$)**: On the long temporal axis, attention is faster but less accurate, so a selective-scan SSM is chosen to prioritize accuracy. STAMPose deploys the **DC-TSSM (Dual-branch Concatenation Temporal SSM) block**, which fuses a bidirectional selective scan with a depthwise-convolution branch via channel concatenation.
+* **Spatial axis ($J=17$)**: attention and a spatial SSM tie in accuracy (40.8 mm), while attention achieves 1.73x higher throughput, so we use attention.
+* **Temporal axis ($T=243$)**: the **DC-TSSM (Dual-branch Concatenation Temporal SSM) block**, which fuses a bidirectional selective scan with a depthwise-convolution branch via channel concatenation, is more accurate than temporal attention (40.8 vs. 42.7 mm), so we use DC-TSSM.
 
-By strategically deploying Attention for spatial modeling and DC-TSSM for temporal modeling, STAMPose matches or surpasses prior SSM-based models while achieving **1.7-2.0x higher throughput** at comparable parameter counts.
+On Human3.6M and MPI-INF-3DHP, STAMPose matches or surpasses prior SSM-based models while achieving **1.7–2.0x higher throughput than PoseMamba** at comparable parameter counts.
 
-**paper** : [ACCV 2026](link1) · [arXiv](link2) · [PDF](link3)
+<!-- **paper** : [ACCV2026](link1) · [arXiv](link2) · [PDF](link3) -->
+**paper** : [ACCV2026](link1) · [PDF](link3)
 
 ## Results (Human3.6M)
 Performance measured on a single NVIDIA RTX 3090Ti GPU.
@@ -68,7 +77,7 @@ cd kernels/selective_scan && pip install -e . && cd ../..
 ```
 
 ## Data Preparation
-### Human 3.6M
+### Human3.6M
 1. Download MotionBERT preprocessed H3.6M data ([OneDrive](https://1drv.ms/u/s!AvAdh0LSjEOlgU7BuUZcyafu8kzc?e=vobkjZ))
 2. unzip it to `data/motion3d/`
    
@@ -153,11 +162,11 @@ Our code is based on the following repositories. We thank the authors for releas
 If you find this code or our paper useful, please cite it using the following format:
 
 ```
-@inproceedings{stampose2026,
-  title={STAMPose: Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation},
-  author={Anonymous},
-  booktitle={ACCV 2026 Submission},
-  year={2026}
+@inproceedings{kim2026stampose,
+  title     = {STAMPose: Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation},
+  author    = {Kim, Hyun-il and Park, Seung-bo},
+  booktitle = {Proceedings of the Asian Conference on Computer Vision (ACCV)},
+  year      = {2026}
 }
 ```
 

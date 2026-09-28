@@ -15,12 +15,16 @@ wandb/
 
 # 데이터셋 및 체크포인트
 data/motion3d/
+data/3dpw/
 checkpoint/
 checkpoint_mpi/
 *.pth
 *.bin
 *.pkl
 *.npz
+SATMPose_train_h36m_B
+SATMPose_train_h36m_L
+SATMPose_train_h36m_S
 
 # Python 자동 생성 파일
 __pycache__/
