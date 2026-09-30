@@ -21,7 +21,7 @@
 </p>
   
 <p align="center">
-  <img src="demo/output/BTS-2.0.mp4" width="70%" alt="STAMPose demo video (BTS - 2.0)" />
+  <video src="demo/output/BTS-2.0.mp4" width="70%" alt="STAMPose demo video (BTS - 2.0)" />
 </p>
 
 <p align="center">
@@ -29,7 +29,7 @@
 </p>
 
 <p align="center">
-  <img src="demo/output/cortis_redred.mp4" width="70%" alt="STAMPose demo video (cortis - REDRED)" />
+  <video src="demo/output/cortis_redred.mp4" width="70%" alt="STAMPose demo video (cortis - REDRED)" />
 </p>
 
 <p align="center">
@@ -175,3 +175,4 @@ This project is released under the [Apache License 2.0](LICENSE).
 
 ## Contact
 akadjsam@inha.edu or akadjsam@gmail.com
+molaal@inha.ac.kr
