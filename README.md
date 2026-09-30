@@ -21,7 +21,7 @@
 </p>
   
 <p align="center">
-  <img src="sample.gif" width="70%" alt="STAMPose demo video (BTS - 2.0)" />
+  <img src="demo/output/BTS-2.0.mp4" width="70%" alt="STAMPose demo video (BTS - 2.0)" />
 </p>
 
 <p align="center">
@@ -29,7 +29,7 @@
 </p>
 
 <p align="center">
-  <img src="sample2.gif" width="70%" alt="STAMPose demo video (cortis - REDRED)" />
+  <img src="demo/output/cortis_redred.mp4" width="70%" alt="STAMPose demo video (cortis - REDRED)" />
 </p>
 
 <p align="center">
