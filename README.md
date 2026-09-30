@@ -29,7 +29,7 @@ https://github.com/user-attachments/assets/39dc79aa-7c99-4409-8ac9-31301757d099
 https://github.com/user-attachments/assets/bf7fbc53-9519-45e0-9793-8680cfd08d6a
 
 <p align="center">
-  Video source is from <a href="https://www.youtube.com/watch?v=tNEpSOfsA3Y&list=LL&index=39">Youtuber Nikoork</a>
+  Video source is from <a href="https://www.youtube.com/watch?v=tNEpSOfsA3Y">Youtuber Nikoork</a>
 </p>
 
 ---
@@ -41,7 +41,7 @@ Monocular 3D human pose estimation (3D HPE) from video has benefited significant
 **STAMPose** (Spatial-Temporal Attention-Mamba Pose estimation) is a hybrid architecture that assigns different operators to the spatial and temporal axes. We select each operator from the accuracy and throughput measured at $J=17$ and $T=243$:
 
 * **Spatial axis ($J=17$)**: attention and a spatial SSM tie in accuracy (40.8 mm), while attention achieves 1.73x higher throughput, so we use attention.
-* **Temporal axis ($T=243$)**: the **DC-TSSM (Dual-branch Concatenation Temporal SSM) block**, which fuses a bidirectional selective scan with a depthwise-convolution branch via channel concatenation, is more accurate than temporal attention (40.8 vs. 42.7 mm), so we use DC-TSSM.
+* **Temporal axis ($T=243$)**: the **DC-TSSM (Dual-branch Concatenation Temporal SSM) block**, which fuses a bidirectional selective scan with a depthwise-convolution branch via channel concatenation, is more accurate than temporal attention (40.8 vs. 42.7 mm), although attention runs faster (46,930 vs. 41,675 FPS), so we use DC-TSSM.
 
 On Human3.6M and MPI-INF-3DHP, STAMPose matches or surpasses prior SSM-based models while achieving **1.7–2.0x higher throughput than PoseMamba** at comparable parameter counts.
 
