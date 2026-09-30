@@ -20,17 +20,13 @@
   </a>
 </p>
   
-<p align="center">
-  <video src="demo/output/BTS-2.0.mp4" controls="controls" muted="muted" width="70%"></video>
-</p>
+https://github.com/user-attachments/assets/39dc79aa-7c99-4409-8ac9-31301757d099
 
 <p align="center">
   Video source is from <a href="https://www.youtube.com/shorts/QrGqxlrgyOc">Youtuber Nikoork</a>
 </p>
 
-<p align="center">
-  <video src="demo/output/cortis_redred.mp4" controls="controls" muted="muted" width="70%"></video>
-</p>
+https://github.com/user-attachments/assets/bf7fbc53-9519-45e0-9793-8680cfd08d6a
 
 <p align="center">
   Video source is from <a href="https://www.youtube.com/watch?v=tNEpSOfsA3Y&list=LL&index=39">Youtuber Nikoork</a>
