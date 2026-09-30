@@ -3,9 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,linux,circuitpython,python,pythonvanilla
 
 # demo 출력물만 무시합니다.
-demo/output/
 demo/video/
-*.mp4
 *.avi
 *.gif
 *.png
