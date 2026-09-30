@@ -21,7 +21,7 @@
 </p>
   
 <p align="center">
-  <video src="https://github.com/akadjsam/STAMPose/raw/main/demo/output/BTS-2.0.mp4" controls="controls" muted="muted" width="70%"></video>
+  <video src="demo/output/BTS-2.0.mp4" controls="controls" muted="muted" width="70%"></video>
 </p>
 
 <p align="center">
@@ -29,7 +29,7 @@
 </p>
 
 <p align="center">
-  <video src="https://github.com/akadjsam/STAMPose/raw/main/demo/output/cortis_redred.mp4" controls="controls" muted="muted" width="70%"></video>
+  <video src="demo/output/cortis_redred.mp4" controls="controls" muted="muted" width="70%"></video>
 </p>
 
 <p align="center">
