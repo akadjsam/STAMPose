@@ -1,4 +1,14 @@
-# STAMPose
+# STAMPose: Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation
+
+<p align="center">
+  <b>Hyun-il Kim</b><sup>1</sup>,
+  <b>Seung-bo Park</b><sup>2</sup>
+</p>
+
+<p align="center">
+  <sup>1</sup> <i>Dept. of Advanced Material Processing & Engineering, Inha University, Incheon, Korea</i><br>
+  <sup>2</sup> <i>Dept. of Software Convergence Engineering, Inha University, Incheon, Korea</i>
+</p>
 
 <p align="center">
   <b>STAMPose PyTorch implementation</b> · ACCV2026 · Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation
