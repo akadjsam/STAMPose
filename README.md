@@ -22,14 +22,11 @@
   
 https://github.com/user-attachments/assets/39dc79aa-7c99-4409-8ac9-31301757d099
 
-<p align="center">
-  Video source is from <a href="https://www.youtube.com/shorts/QrGqxlrgyOc">Youtuber Nikoork</a>
-</p>
-
 https://github.com/user-attachments/assets/bf7fbc53-9519-45e0-9793-8680cfd08d6a
 
 <p align="center">
-  Video source is from <a href="https://www.youtube.com/watch?v=tNEpSOfsA3Y">Youtuber Nikoork</a>
+  Video sources are from Youtuber Nikoork</a><br>
+  (<a href="https://www.youtube.com/shorts/QrGqxlrgyOc">Link 1</a> | <a href="https://www.youtube.com/watch?v=tNEpSOfsA3Y">Link 2</a>)
 </p>
 
 ---
@@ -170,5 +167,5 @@ If you find this code or our paper useful, please cite it using the following fo
 This project is released under the [Apache License 2.0](LICENSE).
 
 ## Contact
-akadjsam@inha.edu or akadjsam@gmail.com
-molaal@inha.ac.kr
+- akadjsam@inha.edu or akadjsam@gmail.com
+- molaal@inha.ac.kr
