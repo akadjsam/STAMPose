@@ -15,6 +15,9 @@
 </p>
 
 <p align="center">
+  <a href="https://akadjsam.github.io/STAMPose/">
+    <img src="https://img.shields.io/badge/Project-Page-1B8FD2" alt="Project Page">
+  </a>
   <a href="https://github.com/akadjsam/STAMPose">
     <img src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white" alt="GitHub">
   </a>
