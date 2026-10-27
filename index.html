@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="STAMPose: Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation (ACCV 2026)">
+  <meta name="keywords" content="STAMPose, 3D Human Pose Estimation, State Space Models, Mamba, Attention">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STAMPose: Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation</title>
+
+  <meta property="og:title" content="STAMPose: Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation">
+  <meta property="og:description" content="ACCV 2026">
+  <meta property="og:url" content="https://akadjsam.github.io/STAMPose/">
+  <meta property="og:image" content="https://akadjsam.github.io/STAMPose/static/images/og_image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="citation_title" content="STAMPose: Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation">
+  <meta name="citation_author" content="Kim, Hyun-il">
+  <meta name="citation_author" content="Park, Seung-bo">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="Asian Conference on Computer Vision (ACCV)">
+  <meta name="citation_pdf_url" content="https://akadjsam.github.io/STAMPose/static/pdfs/STAMPose_ACCV2026.pdf">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 is-size-3-mobile publication-title">STAMPose: Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://orcid.org/0009-0001-3874-043X">Hyun-il Kim</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://orcid.org/0000-0002-0000-4453">Seung-bo Park</a><sup>2*</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Dept. of Advanced Material Processing &amp; Engineering, Inha University,</span>
+            <span class="author-block"><sup>2</sup>Dept. of Software Convergence Engineering, Inha University</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Corresponding author</span>
+          </div>
+
+          <div class="is-size-5 publication-venue">ACCV 2026</div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/pdfs/STAMPose_ACCV2026.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Supplementary Link. -->
+              <span class="link-block">
+                <a href="./static/pdfs/STAMPose_ACCV2026_supp.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supp.</span>
+                </a>
+              </span>
+              <!-- arXiv Link.
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/XXXX.XXXXX"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/akadjsam/STAMPose"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Poster Link. -->
+              <span class="link-block">
+                <a href="./static/pdfs/STAMPose_ACCV2026_poster.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-image"></i>
+                  </span>
+                  <span>Poster</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-variable is-2">
+        <div class="column">
+          <video id="teaser-1" autoplay muted loop playsinline poster="./static/videos/teaser_redred.jpg">
+            <source src="./static/videos/teaser_redred.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="column">
+          <video id="teaser-2" autoplay muted loop playsinline poster="./static/videos/teaser_bts.jpg">
+            <source src="./static/videos/teaser_bts.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        STAMPose places attention on the spatial axis and DC-TSSM on the temporal axis
+        for 2D-to-3D human pose lifting.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            For monocular 2D-to-3D human pose lifting, recent purely Mamba-based methods exploit the linear
+            complexity of state space models (SSMs) by applying them to both the spatial and temporal axes.
+            At standard benchmark lengths (<i>J</i>=17 joints, <i>T</i>=243 frames), however, asymptotic
+            complexity offers limited guidance for choosing each operator.
+            The proposed STAMPose pairs spatial attention with a Dual-Branch Concatenation Temporal SSM
+            (DC-TSSM) block, which fuses a bidirectional selective scan and a depthwise-convolution branch by
+            channel concatenation.
+            We select each operator from measured results: on the spatial axis, attention matches the accuracy
+            of an SSM at 1.73&times; higher throughput, whereas on the temporal axis, DC-TSSM is more accurate
+            than attention, which runs faster.
+            On Human3.6M and MPI-INF-3DHP, STAMPose matches or surpasses prior SSM models while achieving
+            1.7&ndash;2.0&times; higher throughput than PoseMamba at comparable parameter counts.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <!-- Architecture. -->
+        <h3 class="title is-4">STAMPose Architecture</h3>
+        <div class="content has-text-centered">
+          <img src="./static/images/architecture.png"
+               alt="Overall architecture of STAMPose."/>
+          <p class="fig-caption">
+            Overall architecture of the proposed STAMPose framework, with alternating Spatial Attention Blocks
+            and Temporal Mamba Blocks between the input embedding and the regression head.
+          </p>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            STAMPose takes as input a 2D keypoint sequence <b>x</b> &isin; &#8477;<sup><i>T</i>&times;<i>J</i>&times;2</sup>
+            representing <i>J</i> joints over <i>T</i> frames, and outputs a 3D keypoint sequence
+            <b>y</b> &isin; &#8477;<sup><i>T</i>&times;<i>J</i>&times;3</sup>.
+            After projecting the input into a high-dimensional feature space through an initial embedding layer,
+            we add spatial and temporal positional embeddings that encode per-joint and per-frame information.
+            The features then pass through <i>K</i> pairs of a Spatial Attention Block (<i>S</i>) and a Temporal
+            Mamba Block (&#119983;), stacked in alternation as (<i>S</i>&#119983;)<sup><i>K</i></sup> for 2<i>K</i>
+            blocks in total.
+            Both block types use the same residual structure of LayerNorm&ndash;token mixer&ndash;LayerNorm&ndash;MLP,
+            where the token mixer is attention for <i>S</i> and DC-TSSM for &#119983;.
+          </p>
+        </div>
+        <br/>
+        <!--/ Architecture. -->
+
+        <!-- DC-TSSM. -->
+        <h3 class="title is-4">Dual-Branch Concatenation Temporal SSM</h3>
+        <div class="content has-text-centered">
+          <img src="./static/images/dctssm.png" width="80%"
+               alt="Structure of the DC-TSSM block."/>
+          <p class="fig-caption">
+            Structure of the DC-TSSM block: a bidirectional-scan main branch and a depthwise-convolution
+            auxiliary branch fused by channel concatenation.
+          </p>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            DC-TSSM is reconfigured for the temporal modeling of 3D HPE, drawing inspiration from the
+            MambaVision mixer.
+            DC-TSSM delegates spatial topology modeling to the preceding Spatial Attention Block and extracts
+            temporal dependencies through a bidirectional selective scan by restricting the scan target to the
+            temporal axis (<i>T</i>).
+            After an initial linear projection, the input tensor is split along the channel dimension into a
+            main and an auxiliary branch.
+            Unlike the standard Mamba block, whose auxiliary branch acts as an element-wise multiplicative gate,
+            DC-TSSM places an independent 1D depthwise convolution in the auxiliary branch and combines the two
+            branches by channel concatenation, so that the long-range features of the scan branch and the local
+            temporal features of the convolution branch enter the output projection as separate channels.
+          </p>
+        </div>
+        <!--/ DC-TSSM. -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <h3 class="title is-4">Comparison on Human3.6M</h3>
+        <div class="content has-text-centered">
+          <img src="./static/images/table_h36m.png" width="816"
+               alt="Quantitative comparisons on the Human3.6M dataset."/>
+          <p class="fig-caption">
+            Quantitative comparisons on the Human3.6M dataset. <i>T</i> denotes the number of input frames,
+            and * marks methods that estimate only the center frame. P1 and P2 denote MPJPE and P-MPJPE (mm),
+            respectively, and P1<sup>&dagger;</sup> denotes P1 with 2D ground-truth keypoints as input.
+          </p>
+        </div>
+        <br/>
+
+        <h3 class="title is-4">Inference Efficiency</h3>
+        <div class="content has-text-centered">
+          <img src="./static/images/efficiency.png" width="620"
+               alt="Accuracy vs. throughput on Human3.6M."/>
+          <p class="fig-caption">
+            Accuracy vs. throughput on Human3.6M. STAMPose is 1.72&times;, 1.97&times; and 1.98&times; faster
+            than PoseMamba-S, -B and -L. FPS: one RTX 3090 Ti, batch 32, <i>T</i> = 243.
+          </p>
+        </div>
+        <br/>
+
+        <h3 class="title is-4">Comparison on MPI-INF-3DHP</h3>
+        <div class="content has-text-centered">
+          <img src="./static/images/table_mpi.png" width="707"
+               alt="Quantitative comparisons on MPI-INF-3DHP."/>
+          <p class="fig-caption">
+            Quantitative comparisons on MPI-INF-3DHP. Prior results are taken from their original papers.
+            &lsquo;&ndash;&rsquo; indicates that PCK/AUC were not reported by PoseMamba and SasMamba.
+          </p>
+        </div>
+        <br/>
+
+        <h3 class="title is-4">Ablation Study on the Operator Assignment</h3>
+        <div class="content has-text-centered">
+          <img src="./static/images/table_operator.png" width="626"
+               alt="Ablation study on the spatial/temporal operator assignment."/>
+          <p class="fig-caption">
+            Starting from the proposed configuration (Spatial Attention + DC-TSSM), we swap one operator at a
+            time. The temporal SSM denotes the proposed DC-TSSM block, and the spatial SSM adopts the spatial
+            SSM block of PoseMamba with its original scan strategy.
+          </p>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Replacing the spatial operator with an SSM leaves P1 unchanged at 40.8 mm while lowering the
+            throughput by a factor of 1.73, so at <i>J</i>=17 we select the spatial operator by throughput.
+            By contrast, replacing the temporal operator with attention yields the highest throughput
+            (46,930 FPS) but worsens P1 to 42.7 mm, higher than even PoseMamba-S (41.8 mm), so at
+            <i>T</i>=243 we select the temporal operator by accuracy.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Comparison</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+          <p>
+            For a parameter-controlled qualitative comparison, we compare STAMPose-B (3.3M) with
+            PoseMamba-B (3.4M) and SasMamba-large (4.1M), which have comparable parameter scales.
+          </p>
+        </div>
+
+        <h3 class="title is-4">In-the-wild Videos</h3>
+        <video class="result-video" autoplay muted loop playsinline poster="./static/videos/cmp_dance.jpg">
+          <source src="./static/videos/cmp_dance.mp4" type="video/mp4">
+        </video>
+        <video class="result-video" autoplay muted loop playsinline poster="./static/videos/cmp_skating.jpg">
+          <source src="./static/videos/cmp_skating.mp4" type="video/mp4">
+        </video>
+        <video class="result-video" autoplay muted loop playsinline poster="./static/videos/cmp_basketball.jpg">
+          <source src="./static/videos/cmp_basketball.mp4" type="video/mp4">
+        </video>
+        <p class="fig-caption has-text-centered">
+          Qualitative comparison with SasMamba-large and PoseMamba-B on challenging in-the-wild videos.
+        </p>
+        <br/>
+
+        <h3 class="title is-4">Human3.6M</h3>
+        <div class="content has-text-centered">
+          <img src="./static/images/qual_h36m.jpg" width="560"
+               alt="Qualitative comparison on Human3.6M."/>
+          <p class="fig-caption">
+            Qualitative comparison with SasMamba-large and PoseMamba-B on Human3.6M. The gray skeleton is the
+            ground-truth 3D pose. The blue skeleton is the estimated 3D pose.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Poster</h2>
+    <a href="./static/pdfs/STAMPose_ACCV2026_poster.pdf">
+      <img src="./static/images/poster.jpg" alt="STAMPose poster."/>
+    </a>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{kim2026stampose,
+  title     = {STAMPose: Spatial-Temporal Attention-Mamba for Efficient 3D Human Pose Estimation},
+  author    = {Kim, Hyun-il and Park, Seung-bo},
+  booktitle = {Proceedings of the Asian Conference on Computer Vision (ACCV)},
+  year      = {2026}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/pdfs/STAMPose_ACCV2026.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/akadjsam/STAMPose">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Dance videos: Nikoork on YouTube
+            (<a href="https://www.youtube.com/shorts/QrGqxlrgyOc">1</a>,
+            <a href="https://www.youtube.com/watch?v=tNEpSOfsA3Y">2</a>).
+            <!-- Add the sources of the other in-the-wild clips here. -->
+          </p>
+          <p>
+            The website template is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>,
+            which is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
